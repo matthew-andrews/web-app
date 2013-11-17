@@ -11,7 +11,7 @@
 - ~~Make refresh button when server rendered (I think I need fruitmachine modules that can capture controller logic)~~
 - Separate the client from server logic from lib/modules
 - ~~Consider making the pane.start method part of the routers~~
-- Rename routes to controllers :/
+- ~~Rename routes to controllers :/~~
 
 Clean up:
 
