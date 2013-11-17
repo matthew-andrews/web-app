@@ -2,7 +2,7 @@ var app = window.page = require('page');
 
 var index = require('./lib/routes');
 var article = require('./lib/routes/article');
-var model = require('./lib/models/article-client');
+var model = require('./lib/client/models/article');
 
 app.base('/');
 app('/', index(model));

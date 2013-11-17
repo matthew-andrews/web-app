@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 
-var model = require('./lib/models/article-server');
+var model = require('./lib/server/models/article');
 
 var index = require('./lib/routes');
 var article = require('./lib/routes/article');
