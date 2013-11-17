@@ -6,7 +6,7 @@
  */
 
 var FastClick = require('fastclick');
-var hasHistoryApi = require('./libs/device/has-history-api');
+var hasHistoryApi = require('./lib/device/has-history-api');
 
 var fastClick;
 var iOSPrivateBrowsing;
