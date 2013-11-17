@@ -1,7 +1,7 @@
 var express = require('express');
 
-// TODO: Add fruitmachine 'ready' event
-require('./server/fruitmachine');
+// HACK: Force the views to get instantiated
+require('./server/views');
 
 var index = require('./server/controllers');
 var article = require('./server/controllers/article');
