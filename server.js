@@ -1,23 +1,11 @@
 var express = require('express');
-var hoganjs = require('hogan.js');
-var fruitmachine = require('fruitmachine');
+
+// TODO: Add fruitmachine 'ready' event
+require('./server/fruitmachine');
 
 var index = require('./server/routes');
 var article = require('./server/routes/article');
 var articleJson = require('./server/routes/article-json');
-
-// Register fruit for server
-var apple = hoganjs.compile(require('fs').readFileSync(__dirname + '/views/modules/apple.html', { encoding: 'utf8' }));
-var satsuma = hoganjs.compile(require('fs').readFileSync(__dirname + '/views/modules/satsuma.html', { encoding: 'utf8' }));
-
-fruitmachine.define({
-  name: 'apple',
-  template: apple.render.bind(apple)
-});
-fruitmachine.define({
-  name: 'satsuma',
-  template: satsuma.render.bind(satsuma)
-});
 
 var app = express();
 app.set('view engine', 'html');
