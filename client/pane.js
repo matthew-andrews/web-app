@@ -1,4 +1,3 @@
-var fruitmachine = require('fruitmachine');
 var current;
 
 module.exports = {
