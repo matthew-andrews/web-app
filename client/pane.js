@@ -1,5 +1,5 @@
 var fruitmachine = require('fruitmachine');
-var current = undefined;
+var current;
 
 module.exports = {
   set: function(view) {
