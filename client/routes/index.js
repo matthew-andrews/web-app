@@ -11,12 +11,27 @@ function loadArticles(view) {
   });
 }
 
-module.exports = function() {
-    var view = new Module();
-    view.on('refreshbuttonclick', function() {
-      loadArticles(view);
-    });
-    view.render();
-    pane.set(view);
-    loadArticles(view);
+function onRefreshButtonClick(view) {
+  return function() {
+    loadArticles(this);
+  }
+}
+
+// HACK Ensure the refreshbuttonclick listener is attached, but only once
+function attachEvents(view) {
+    view.off('refreshbuttonclick');
+    view.on('refreshbuttonclick', onRefreshButtonClick(view));
 };
+
+module.exports = function(req) {
+    var view = pane.get();
+    if (!req.init) {
+      view = new Module();
+      view.render();
+      loadArticles(view);
+      pane.set(view);
+    }
+    attachEvents(view);
+};
+
+module.exports.attachEvents = attachEvents;

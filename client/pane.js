@@ -14,5 +14,8 @@ module.exports = {
     var view = fruitmachine(json);
     current = view;
     view.setup();
+  },
+  get: function() {
+    return current;
   }
-}
+};
