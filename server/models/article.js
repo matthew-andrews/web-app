@@ -3,7 +3,7 @@ var FeedParser = require('feedparser');
 
 function streamArticles() {
   var rssStream = superagent.get('http://feeds2.feedburner.com/ft/tech-blog');
-  return rssStream.pipe(new FeedParser())
+  return rssStream.pipe(new FeedParser());
 }
 
 exports.get = function(id, cb) {
@@ -40,4 +40,4 @@ exports.get = function(id, cb) {
         cb(null, data);
       }
     });
-}
+};

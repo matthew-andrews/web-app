@@ -14,14 +14,14 @@ function loadArticles(view) {
 function onRefreshButtonClick(view) {
   return function() {
     loadArticles(this);
-  }
+  };
 }
 
 // HACK Ensure the refreshbuttonclick listener is attached, but only once
 function attachEvents(view) {
     view.off('refreshbuttonclick');
     view.on('refreshbuttonclick', onRefreshButtonClick(view));
-};
+}
 
 module.exports = function(req) {
   var json;
