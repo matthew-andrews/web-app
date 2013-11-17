@@ -7,6 +7,8 @@ module.exports = function(req, res) {
     var view = new Module({
       model: new fruitmachine.Model(data)
     });
-    document.getElementById('js-body').innerHTML = view.toHTML();
+    view.render();
+    view.inject(document.getElementById('js-body'));
+    view.setup();
   });
 };
