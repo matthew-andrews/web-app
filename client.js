@@ -1,7 +1,7 @@
 var app = require('page');
 
-var index = require('./client/routes');
-var article = require('./client/routes/article');
+var index = require('./client/controllers');
+var article = require('./client/controllers/article');
 var pane = require('./client/pane');
 
 app.base('/');

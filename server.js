@@ -3,9 +3,9 @@ var express = require('express');
 // TODO: Add fruitmachine 'ready' event
 require('./server/fruitmachine');
 
-var index = require('./server/routes');
-var article = require('./server/routes/article');
-var articleJson = require('./server/routes/article-json');
+var index = require('./server/controllers');
+var article = require('./server/controllers/article');
+var articleJson = require('./server/controllers/article-json');
 
 var app = express();
 app.set('view engine', 'html');
