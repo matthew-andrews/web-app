@@ -1,9 +1,9 @@
 var express = require('express');
 var app = express();
 
-var index = require('./lib/server/routes');
-var article = require('./lib/server/routes/article');
-var articleJson = require('./lib/server/routes/article-json');
+var index = require('./server/routes');
+var article = require('./server/routes/article');
+var articleJson = require('./server/routes/article-json');
 
 app.set('view engine', 'html');
 app.enable('view cache');

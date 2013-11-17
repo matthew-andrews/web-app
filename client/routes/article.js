@@ -1,5 +1,5 @@
 var fruitmachine = require('fruitmachine');
-var Module = require('../../modules/article');
+var Module = require('../../lib/modules/article');
 var model = require('../models/article');
 
 module.exports = function(req, res) {

@@ -1,8 +1,8 @@
 var app = window.page = require('page');
 
-var index = require('./lib/client/routes');
-var article = require('./lib/client/routes/article');
-var model = require('./lib/client/models/article');
+var index = require('./client/routes');
+var article = require('./client/routes/article');
+var model = require('./client/models/article');
 
 app.base('/');
 app('/', index);

@@ -1,11 +1,11 @@
 var fruitmachine = require('fruitmachine');
-var Module = require('../../modules/article');
+var Module = require('../../lib/modules/list');
 var model = require('../models/article');
 
 module.exports = function(req, res) {
-  model.get(parseInt(req.params[0], 10), function(err, data) {
+  model.get(function(err, data) {
     var view = new Module({
-      model: new fruitmachine.Model(data)
+      model: new fruitmachine.Model({ articles: data })
     });
     res.render('layout', { yield: view.toHTML() });
   });
