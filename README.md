@@ -5,7 +5,7 @@
 - ~~ftdomdelegate for the click behaviours.~~
 - ~~fruitmachine on the client side.~~
 - ~~Find better ways of splitting codepaths between client and server.~~
-- Teardown views, don't just rip them out.
+- ~~Teardown views, don't just rip them out.~~
 - Add data sync.
 - Add AppCache.
 - Make refresh button when server rendered (I think I need fruitmachine modules that can capture controller logic)
