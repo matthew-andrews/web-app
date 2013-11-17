@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+    <link href="/css/global.css" media="all" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="/api/resources/javascript.php"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      APP.applicationController.startFromServer();
+    });
+    </script>
+    <title>News</title>
+  </head>
+  <body>
+    <div id="js-window">
+      <div id="js-header"><h1>FT Tech Blog</h1></div>
+      <div id="js-body">
+        {{{ yield }}}
+      </div>
+    </div>
+  </body>
+</html>
