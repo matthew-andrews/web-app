@@ -1,6 +1,7 @@
 var fruitmachine = require('fruitmachine');
 var Module = require('../../lib/modules/list');
 var model = require('../models/article');
+var pane = require('../pane');
 
 function loadArticles(view) {
   model.get(function(err, data) {
@@ -16,7 +17,6 @@ module.exports = function() {
       loadArticles(view);
     });
     view.render();
-    view.inject(document.getElementById('js-body'));
-    view.setup();
+    pane.set(view);
     loadArticles(view);
 };

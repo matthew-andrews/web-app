@@ -3,15 +3,16 @@
   <head>
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
     <link href="/css/global.css" media="all" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="/web-app.js"></script>
     <title>News</title>
   </head>
   <body>
     <div id="js-window">
       <div id="js-header"><h1>FT Tech Blog</h1></div>
       <div id="js-body">
-        {{{ yield }}}
+        {{{html}}}
       </div>
     </div>
   </body>
+  <script type="text/javascript" src="/web-app.js"></script>
+  <script>APP({{{json}}});</script>
 </html>

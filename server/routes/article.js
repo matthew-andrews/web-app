@@ -7,6 +7,6 @@ module.exports = function(req, res) {
     var view = new Module({
       model: new fruitmachine.Model(data)
     });
-    res.render('layout', { yield: view.toHTML() });
+    res.render('layout', { html: view.toHTML(), json: JSON.stringify(view.toJSON()) });
   });
 };

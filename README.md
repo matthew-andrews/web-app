@@ -8,6 +8,8 @@
 - Teardown views, don't just rip them out.
 - Add data sync.
 - Add AppCache.
+- ~~Make refresh button when server rendered (I think I need fruitmachine modules that can capture controller logic)~~
+- Separate the client from server logic from lib/modules
 
 Clean up:
 
