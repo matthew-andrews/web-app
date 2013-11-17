@@ -24,14 +24,15 @@ function attachEvents(view) {
 };
 
 module.exports = function(req) {
-    var view = pane.get();
-    if (!req.init) {
-      view = new Module();
-      view.render();
-      loadArticles(view);
-      pane.set(view);
-    }
-    attachEvents(view);
-};
+  var json;
+  if (req.init) json = window.json;
+  var view = new Module(json);
 
-module.exports.attachEvents = attachEvents;
+  if (!req.init) {
+    loadArticles(view);
+    view.render();
+  }
+
+  pane.set(view);
+  attachEvents(view);
+};

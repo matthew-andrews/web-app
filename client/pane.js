@@ -5,13 +5,8 @@ module.exports = {
   set: function(view) {
     if (current) {
       current.teardown();
+      view.inject(document.getElementById('js-body'));
     }
-    current = view;
-    view.inject(document.getElementById('js-body'));
-    view.setup();
-  },
-  setup: function(json) {
-    var view = fruitmachine(json);
     current = view;
     view.setup();
   },

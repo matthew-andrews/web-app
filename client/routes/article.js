@@ -3,13 +3,22 @@ var Module = require('../../lib/modules/article');
 var model = require('../models/article');
 var pane = require('../pane');
 
-module.exports = function(req) {
-  if (req.init) return;
-  var view = new Module();
+function loadArticle(id, view) {
+    model.get(id, function(err, data) {
+      view.model.set(data);
+      view.render();
+    });
+}
 
-  model.get(parseInt(req.params[0], 10), function(err, data) {
-    view.model.set(data);
+module.exports = function(req) {
+  var json;
+  if (req.init) json = window.json;
+  var view = new Module(json);
+
+  if (!req.init) {
+    loadArticle(parseInt(req.params[0], 10), view);
     view.render();
-    pane.set(view);
-  });
+  }
+
+  pane.set(view);
 }
