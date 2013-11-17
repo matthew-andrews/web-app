@@ -8,7 +8,4 @@ app.base('/');
 app('/', index);
 app(/^([0-9]+)\/?$/, article);
 
-// Dispatch with false because we should already have content, unless we don't.
-module.exports = function(json) {
-  app.start();
-};
+module.exports = app.start;
