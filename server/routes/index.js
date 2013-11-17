@@ -1,12 +1,12 @@
 var fruitmachine = require('fruitmachine');
-var Module = require('../../lib/modules/list');
 var model = require('../models/article');
 
 module.exports = function(req, res) {
   model.get(function(err, data) {
-    var view = new Module({
-      model: new fruitmachine.Model({ articles: data })
+    var view = fruitmachine({
+      module: "satsuma",
+      model: { articles: data }
     });
-    res.render('layout', { html: view.toHTML(), json: JSON.stringify(view.toJSON()) });
+    res.render('layouts/default', { html: view.toHTML(), json: JSON.stringify(view.toJSON()) });
   });
 };

@@ -10,7 +10,8 @@ module.exports = function(grunt) {
         dest: 'public/<%= pkg.name %>.js'
       },
       options: {
-        standalone: 'APP'
+        standalone: 'APP',
+        transform: [require('browserify-hogan')]
       }
     },
 
