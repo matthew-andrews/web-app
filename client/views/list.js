@@ -1,5 +1,5 @@
 var fruitmachine = require('fruitmachine');
-var template = require('../../views/modules/satsuma.html');
+var template = require('../../views/partials/satsuma.html');
 
 // HACK Don't allow delegate to be evaluated by node because it will complain HTML element is undefined
 if (typeof window !== 'undefined') {
