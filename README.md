@@ -15,8 +15,8 @@
 
 Clean up:
 
-- Move all views to the views folder.
-- Convert module views to proper templates (not straight javascript).
+- ~~Move all views to the views folder.~~
+- ~~Convert module views to proper templates (not straight javascript).~~
 - Functional testing framework setup.
 
 Ideas that have come out of this:
