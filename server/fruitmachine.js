@@ -1,15 +1,13 @@
 var hoganjs = require('hogan.js');
 var fruitmachine = module.exports = require('fruitmachine');
+var readFileSync = require('fs').readFileSync;
 
-// Register fruit for server
-var apple = hoganjs.compile(require('fs').readFileSync(__dirname + '/../views/modules/apple.html', { encoding: 'utf8' }));
-var satsuma = hoganjs.compile(require('fs').readFileSync(__dirname + '/../views/modules/satsuma.html', { encoding: 'utf8' }));
+function register(name) {
+  var template = hoganjs.compile(readFileSync(__dirname + '/../views/modules/' + name + '.html', { encoding: 'utf8' }));
+  fruitmachine.define({
+    name: name,
+    template: template.render.bind(template)
+  });
+}
 
-fruitmachine.define({
-  name: 'apple',
-  template: apple.render.bind(apple)
-});
-fruitmachine.define({
-  name: 'satsuma',
-  template: satsuma.render.bind(satsuma)
-});
+['apple', 'satsuma'].forEach(register);
