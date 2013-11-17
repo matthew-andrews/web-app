@@ -2,9 +2,12 @@
 
 - ~~New modules for missing components.~~
 - ~~Page.js for the routing.~~
-- ftdomdelegate for the click behaviours.
-- fruitmachine on the client side.
+- ~~ftdomdelegate for the click behaviours.~~
+- ~~fruitmachine on the client side.~~
 - ~~Find better ways of splitting codepaths between client and server.~~
+- Teardown views, don't just rip them out.
+- Add data sync.
+- Add AppCache.
 
 Clean up:
 
