@@ -1,1 +1,3 @@
 /node_modules/
+/public/web-app.js
+/public/web-app.min.js

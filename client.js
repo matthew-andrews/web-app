@@ -1,4 +1,4 @@
-var app = window.page = require('page');
+var app = require('page');
 
 var index = require('./client/routes');
 var article = require('./client/routes/article');
@@ -8,6 +8,5 @@ app.base('/');
 app('/', index);
 app(/^([0-9]+)\/?$/, article);
 
-// Dispatch with false because we should already have content,
-// unless we don't.
+// Dispatch with false because we should already have content, unless we don't.
 app.start({ dispatch: false });
