@@ -1,9 +1,10 @@
 # web-app
 
 - New modules for missing components.
-- Page.js for the routing.
+- ~~Page.js for the routing.~~
 - ftdomdelegate for the click behaviours.
 - fruitmachine on the client side.
+- Find better ways of splitting codepaths between client and server.
 
 Clean up:
 
