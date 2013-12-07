@@ -1,5 +1,4 @@
 var app = require('page');
-var offline = require('offline-express');
 
 var index = require('./client/controllers');
 var article = require('./client/controllers/article');
@@ -10,6 +9,5 @@ app('/', index);
 app(/^([0-9]+)\/?$/, article);
 
 module.exports = function() {
-  app.start;
-  offline();
+  app.start();
 };
