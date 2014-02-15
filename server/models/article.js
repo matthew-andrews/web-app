@@ -25,9 +25,9 @@ function get(id, cb) {
           headline: item.title,
           author: item['dc:creator']['#'],
           date: item.pubDate,
-          body: item.description
         };
         if (id && id === count) {
+          story.body = item.description;
           cb(null, story);
         } else if (!id) {
           data.push(story);
