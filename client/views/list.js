@@ -2,7 +2,6 @@ var fruitmachine = require('fruitmachine');
 var template = require('../../views/partials/satsuma.html');
 var helpers = [require('fruitmachine-ftdomdelegate')];
 
-
 module.exports = fruitmachine.define({
   name: 'satsuma',
   helpers: helpers,
