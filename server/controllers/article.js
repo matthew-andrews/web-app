@@ -1,5 +1,4 @@
 var Q = require('q');
-var fruitmachine = require('fruitmachine');
 var model = require('../models/article');
 var _render = require('./_default');
 
