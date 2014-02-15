@@ -1,12 +1,11 @@
 var resources = require('../models/resource');
 
-module.exports = function(res, view) {
+module.exports = function(res, data) {
   resources.get()
     .then(function(resources) {
-      res.render('layouts/default', fruitmachine({
-      	resources: resources,
-      	html: view.toHTML(),
-      	json: JSON.stringify(view.toJSON())
-      }));
+      res.render('fruitmachine', {
+        resources: resources,
+        data: data
+      });
     });
 };

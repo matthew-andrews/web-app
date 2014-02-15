@@ -1,13 +1,28 @@
+/**
+ * External dependencies
+ */
+
+var Q = require('q');
 var hoganjs = require('hogan.js');
 var fruitmachine = module.exports = require('fruitmachine');
-var readFileSync = require('fs').readFileSync;
+var readFile = require('fs').readFile;
+
+/**
+ * Local variables
+ */
+
+var views = ['apple', 'satsuma'];
 
 function register(name) {
-  var template = hoganjs.compile(readFileSync(__dirname + '/../views/partials/' + name + '.html', { encoding: 'utf8' }));
-  fruitmachine.define({
-    name: name,
-    template: template.render.bind(template)
-  });
+  return Q.nfcall(readFile, __dirname + '/../views/partials/' + name + '.html', 'utf8')
+    .then(function(raw) {
+      var template = hoganjs.compile(raw);
+      fruitmachine.define({ name: name, template: template.render.bind(template) });
+    });
 }
 
-['apple', 'satsuma'].forEach(register);
+module.exports = function() {
+  return Q.all(views.map(function(view) {
+    return register(view);
+  }));
+};
