@@ -1,0 +1,5 @@
+@import 'o-colors/main';
+
+body {
+  background: oColorsGetColorFor(page-background);
+}

@@ -17,7 +17,7 @@ module.exports = function(grunt) {
 
     watch: {
       scripts: {
-        files: ['lib/**/*.js', 'client/**/*.js', 'client.js', 'client/*.js'],
+        files: ['lib/**/*.js', 'client/**/*.js', 'client.js', 'client/*.js', 'client/*.css'],
         tasks: ['default']
       }
     },
@@ -27,14 +27,27 @@ module.exports = function(grunt) {
          src: 'public/<%= pkg.name %>.js',
          dest: 'public/<%= pkg.name %>.min.js'
        }
-     }
+     },
+
+    sass: {
+      dist: {
+        files: {
+          'public/<%= pkg.name %>.css' : 'client/main.scss'
+        },
+        options: {
+          loadPath: 'bower_components',
+          style: 'compressed'
+        }
+      }
+    }
 
   });
 
   grunt.loadNpmTasks('grunt-browserify');
+  grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   // Default task.
-  grunt.registerTask('default', ['browserify', 'uglify']);
+  grunt.registerTask('default', ['browserify', 'uglify', 'sass']);
 };

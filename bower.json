@@ -1,0 +1,13 @@
+{
+  "name": "web-app",
+  "version": "0.0.0",
+  "homepage": "https://github.com/matthew-andrews/web-app",
+  "authors": [
+    "Matt Andrews <matt@mattandre.ws>"
+  ],
+  "dependencies": {
+    "o-colors": "git://github.com/Financial-Times/o-colors#~2.1.6"
+  },
+  "license": "MIT",
+  "private": true
+}

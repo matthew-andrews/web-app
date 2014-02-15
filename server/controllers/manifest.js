@@ -1,7 +1,7 @@
 var Q = require('q');
 var fs = require('fs');
 
-var resources = ['web-app.js', 'css/global.css'];
+var resources = ['web-app.js', 'web-app.css'];
 
 function mtime(resource, cb) {
   fs.stat(__dirname + '/../../public/' + resource, function(err, stats) {

@@ -1,3 +1,6 @@
 /node_modules/
+/bower_components
 /public/web-app.js
 /public/web-app.min.js
+/public/web-app.css
+/.sass-cache
