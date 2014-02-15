@@ -1,4 +1,3 @@
-var fruitmachine = require('fruitmachine');
 var Module = require('../views/list');
 var model = require('../models/article');
 var pane = require('../pane');
