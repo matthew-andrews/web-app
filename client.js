@@ -11,5 +11,11 @@ app(/^([0-9]+)\/?$/, article);
 
 module.exports = function() {
   app.start();
-  appcache();
+  appcache().then(function(result) {
+    if (result === 'updateready') {
+      if (confirm("Your app has been updated.  Would you like to restart?")) {
+        location.reload();
+      }
+    }
+  });
 };

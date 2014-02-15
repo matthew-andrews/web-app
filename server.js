@@ -20,6 +20,7 @@ app.get(/^\/([0-9]+)\/?$/, resources, require('./server/controllers/article'));
 
 // API only endpoints
 app.get('/api/articles.json', require('./server/controllers/article-json'));
+app.get(/^\/api\/article\/([0-9]+)\.json\/?$/, require('./server/controllers/article-json'));
 
 // Offline endpoints
 app.get('/offline/iframe', require('./server/controllers/iframe'));

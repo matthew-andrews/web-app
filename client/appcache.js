@@ -25,7 +25,7 @@ var Q = require('q');
  * Local vars
  */
 
-var promise;
+var deferred;
 var cookie = 'up';
 var namespace = 'offline';
 var statuses = {
@@ -61,8 +61,8 @@ function onMessage(event) {
  */
 
 function load() {
-  if (promise) return promise;
-  promise = Q.defer();
+  if (deferred) return deferred.promise;
+  deferred = Q.defer();
   window.addEventListener("message", onMessage, false);
 
   // HACK: Set a cookie so that the application
@@ -75,7 +75,7 @@ function load() {
   iframe.setAttribute('src', '/' + namespace + '/iframe');
   iframe.setAttribute('id', 'appcache');
   document.body.appendChild(iframe);
-  return promise;
+  return deferred.promise;
 }
 
 /**
@@ -101,9 +101,9 @@ function onEvent(eventCode, hasChecked) {
       // Remove message listener
       window.removeEventListener("message", onMessage);
 
-      // Resolve promise
-      promise.resolve();
-      promise = undefined;
+      // Resolve deferred
+      deferred.resolve(s);
+      deferred = undefined;
     }
   }
 }
