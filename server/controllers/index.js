@@ -6,9 +6,8 @@ module.exports = function(req, res) {
   model.get()
     .then(function(data) {
       _render(res, {
-          module: "satsuma",
-          model: { articles: data }
-        })
-      );
+        module: "satsuma",
+        model: { articles: data }
+      }));
     });
 };
