@@ -17,7 +17,7 @@ module.exports = fruitmachine.define({
 
     this.on('initialize', function() {
       this.delegate.on('click', '#js-refresh', function() {
-        self.fire('refreshbuttonclick');
+        this.fire('refreshbuttonclick');
       }.bind(this));
     });
   }
