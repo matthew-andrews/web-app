@@ -2,20 +2,17 @@ var Module = require('../views/article');
 var model = require('../models/article');
 var pane = require('../pane');
 
-function loadArticle(id, view) {
-    model.get(id, function(err, data) {
-      view.model.set(data);
-      view.render();
-    });
-}
-
 module.exports = function(req) {
   var json;
   if (req.init) json = window.json;
   var view = new Module(json);
 
   if (!req.init) {
-    loadArticle(parseInt(req.params[0], 10), view);
+    model.get(parseInt(req.params[0], 10))
+      .then(function(data) {
+        view.model.set(data);
+        view.render();
+      });
     view.render();
   }
 

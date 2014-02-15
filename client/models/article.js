@@ -1,18 +1,16 @@
 var superagent = require('superagent');
+var Q = require('q');
 
-exports.get = function(id, cb) {
-  if (!cb) {
-    cb = id;
-    id = undefined;
-  }
+function get(id) {
+  var deferred = Q.defer();
+  var url = '/api/article' + (id ? '/' + id : 's') + '.json';
+  Q.nfcall(superagent.get, url)
+    .then(function(res) {
+      deferred.resolve(res.body);
+    });
+  return deferred.promise;
+}
 
-  if (id) {
-    superagent.get('/api/article/' + id + '.json', function(res) {
-      cb(null, res.body);
-    });
-  } else {
-    superagent.get('/api/articles.json', function(res) {
-      cb(null, res.body);
-    });
-  }
+exports.get = function(id) {
+  return get(id);
 };
