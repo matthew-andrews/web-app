@@ -17,7 +17,7 @@ module.exports = function(grunt) {
 
     watch: {
       scripts: {
-        files: ['lib/**/*.js', 'client/**/*.js', 'client.js', 'client/*.js', 'client/*.css'],
+        files: ['lib/**/*.js', 'client/**/*.js', 'client.js', 'client/*.js', 'main.css'],
         tasks: ['default']
       }
     },
@@ -32,7 +32,7 @@ module.exports = function(grunt) {
     sass: {
       dist: {
         files: {
-          'public/<%= pkg.name %>.css' : 'client/main.scss'
+          'public/<%= pkg.name %>.css' : 'main.scss'
         },
         options: {
           loadPath: 'bower_components',
