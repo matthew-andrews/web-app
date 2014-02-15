@@ -1,3 +1,4 @@
+var Q = require('q');
 var superagent = require('superagent');
 var FeedParser = require('feedparser');
 
@@ -6,7 +7,7 @@ function streamArticles() {
   return rssStream.pipe(new FeedParser());
 }
 
-exports.get = function(id, cb) {
+function get(id, cb) {
   var data = [];
   var count = 0;
 
@@ -40,4 +41,8 @@ exports.get = function(id, cb) {
         cb(null, data);
       }
     });
+}
+
+exports.get = function(id) {
+  return Q.nfcall(get, id);
 };

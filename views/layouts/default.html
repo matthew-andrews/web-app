@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <link href="/web-app.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/web-app.css?icb={{resources.css}}" media="all" rel="stylesheet" type="text/css" />
     <title>News</title>
   </head>
   <body>
@@ -12,7 +12,9 @@
         {{{html}}}
       </div>
     </div>
+{{{resources.js}}}
+{{{resources.css}}}
   </body>
-  <script type="text/javascript" src="/web-app.js"></script>
+  <script type="text/javascript" src="/web-app.js?icb={{resources.js}}"></script>
   <script>window.json={{{json}}};APP();</script>
 </html>

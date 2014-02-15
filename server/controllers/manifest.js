@@ -1,24 +1,15 @@
-var Q = require('q');
-var fs = require('fs');
-
-var resources = ['web-app.js', 'web-app.css'];
-
-function mtime(resource, cb) {
-  fs.stat(__dirname + '/../../public/' + resource, function(err, stats) {
-    if (err) return cb(err);
-    cb(null, '/' + resource + '?icb=' + stats.mtime.getTime());
-  });
-}
+var model = require('../models/resource');
 
 module.exports = function(req, res) {
   res.set('Content-Type', 'text/cache-manifest');
 
-  Q.all(resources.map(function(resource) {
-    return Q.nfcall(mtime, resource);
-  }))
+  model.get()
     .then(function(results) {
+      var resources = Object.keys(results).map(function(resource) {
+        return resource + '?icb=' + results[resource];
+      });
       res.render('layouts/manifest', {
-        resources: results
+        resources: resources
       });
     });
 };
