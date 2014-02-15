@@ -16,10 +16,9 @@ module.exports = fruitmachine.define({
     if (typeof window === 'undefined') return;
 
     this.on('initialize', function() {
-      var self = this;
       this.delegate.on('click', '#js-refresh', function() {
         self.fire('refreshbuttonclick');
-      });
+      }.bind(this));
     });
   }
 });

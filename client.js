@@ -1,4 +1,5 @@
 var app = require('page');
+var appcache = require('./client/appcache');
 
 var index = require('./client/controllers');
 var article = require('./client/controllers/article');
@@ -10,4 +11,5 @@ app(/^([0-9]+)\/?$/, article);
 
 module.exports = function() {
   app.start();
+  appcache();
 };
