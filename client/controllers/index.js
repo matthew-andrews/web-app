@@ -10,12 +10,10 @@ function render(data) {
 }
 
 module.exports = function(req) {
-  var json = req.init ? window.json : undefined;
-
   if (view) {
     view.model.clear();
   } else {
-    view = new List(json);
+    view = new List(req.data);
     view.on('refreshbuttonclick', function() {
       articles
         .synchronize()

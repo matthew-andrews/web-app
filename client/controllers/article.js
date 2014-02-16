@@ -10,12 +10,10 @@ function render(data) {
 }
 
 function article(req) {
-  var json = req.init ? window.json : undefined;
-
   if (view) {
     view.model.clear();
   } else {
-    view = new Article(json);
+    view = new Article(req.data);
   }
 
   if (!req.init || !json) {

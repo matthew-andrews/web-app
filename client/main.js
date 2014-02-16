@@ -10,9 +10,15 @@ var indexeddb = require('./lib/indexeddb');
 var index = require('./controllers');
 var article = require('./controllers/article');
 
+function middleware(req, next) {
+  req.data = req.init ? window.json : undefined;
+  delete req.init;
+  next();
+}
+
 app.base('/');
-app('/', index);
-app(/^([0-9]+)\/?$/, article);
+app('/', middleware, index);
+app(/^([0-9]+)\/?$/, middleware, article);
 
 module.exports = function() {
   appcache().then(function(result) {
