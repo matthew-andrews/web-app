@@ -1,30 +1,24 @@
 var List = require('../views/list');
-var article = require('../models/article');
+var articles = require('../models/article');
 var pane = require('../pane');
+var view;
 
-function synchronize(view) {
-  article.synchronize()
-    .then(function(data) {
-      view.model.set('articles', data);
-      view.render();
-      view.setup();
-    });
-}
-
-// HACK Ensure the refreshbuttonclick listener is attached, but only once
-function attachEvents(view) {
-    view.off('refreshbuttonclick');
-    view.on('refreshbuttonclick', function() {
-      synchronize(view);
-    });
+function render(data) {
+  view.model.set('articles', data);
+  view.render();
+  view.setup();
 }
 
 module.exports = function(req) {
-  var json;
-  if (req.init) json = window.json;
-  var view = new List(json);
-  if (!req.init) synchronize(view);
+  var json = req.init ? window.json : undefined;
 
+  if (!view) {
+    view = new List(json);
+    view.on('refreshbuttonclick', function() {
+      articles.synchronize().then(render);
+    });
+  }
+
+  if (!req.init) articles.get().then(render);
   pane.set(view);
-  attachEvents(view);
 };
