@@ -5,16 +5,16 @@
 var Q = require('q');
 var hoganjs = require('hogan.js');
 var fruitmachine = require('fruitmachine');
-var readFile = require('fs').readFile;
+var fs = require('fs');
 
 /**
  * Local variables
  */
 
-var views = ['apple', 'satsuma'];
+var directory = __dirname + '/../templates/partials';
 
 function register(name) {
-  return Q.nfcall(readFile, __dirname + '/../templates/partials/' + name + '.html', 'utf8')
+  return Q.nfcall(fs.readFile, directory + '/' + name, 'utf8')
     .then(function(raw) {
       var template = hoganjs.compile(raw);
       fruitmachine.define({ name: name, template: template.render.bind(template) });
@@ -22,5 +22,8 @@ function register(name) {
 }
 
 module.exports = function() {
-  return Q.all(views.map(register));
+  return Q.nfcall(fs.readdir, directory)
+    .then(function(views) {
+      return Q.all(views.map(register));
+    });
 };
