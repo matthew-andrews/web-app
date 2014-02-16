@@ -4,8 +4,8 @@
 
 var app = require('page');
 
-var appcache = require('./libs/appcache');
-var indexeddb = require('./libs/indexeddb');
+var appcache = require('./lib/appcache');
+var indexeddb = require('./lib/indexeddb');
 
 var index = require('./controllers');
 var article = require('./controllers/article');

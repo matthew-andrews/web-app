@@ -1,6 +1,6 @@
 var superagent = require('superagent');
 var Q = require('q');
-var indexeddb = require('../libs/indexeddb');
+var indexeddb = require('../lib/indexeddb');
 
 function download(id) {
   var deferred = Q.defer();
