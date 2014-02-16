@@ -1,5 +1,12 @@
+
+/**
+ * External dependencies
+ */
+
 var app = require('page');
+
 var appcache = require('./client/appcache');
+var indexeddb = require('./client/libs/indexeddb');
 
 var index = require('./client/controllers');
 var article = require('./client/controllers/article');
@@ -18,4 +25,8 @@ module.exports = function() {
       }
     }
   });
+  indexeddb()
+    .then(function() {
+      return article.synchronize();
+    });
 };

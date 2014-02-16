@@ -1,7 +1,8 @@
 var superagent = require('superagent');
 var Q = require('q');
+var indexeddb = require('../libs/indexeddb');
 
-function get(id) {
+function download(id) {
   var deferred = Q.defer();
   var url = '/api/article' + (id ? '/' + id : 's') + '.json';
   Q.nfcall(superagent.get, url)
@@ -11,6 +12,35 @@ function get(id) {
   return deferred.promise;
 }
 
-exports.get = function(id) {
-  return get(id);
+function get(id) {
+  var deferred = Q.defer();
+  indexeddb.get('articles', id)
+    .then(deferred.resolve)
+    .catch(function() {
+      return download(id)
+        .then(deferred.resolve)
+        .catch(deferred.reject);
+    })
+  return deferred.promise;
+}
+
+function synchronize() {
+  var articles;
+  var deferred = Q.defer();
+  download()
+    .then(function(results) {
+      articles = results;
+      return indexeddb.clear('articles')
+    })
+    .then(function() {
+      return indexeddb.insert('articles', articles);
+    })
+    .then(deferred.resolve);
+  return deferred.promise;
+}
+
+
+module.exports = {
+  get: get,
+  synchronize: synchronize
 };

@@ -2,7 +2,7 @@ var Module = require('../views/article');
 var model = require('../models/article');
 var pane = require('../pane');
 
-module.exports = function(req) {
+function article(req) {
   var json;
   if (req.init) json = window.json;
   var view = new Module(json);
@@ -17,4 +17,7 @@ module.exports = function(req) {
   }
 
   pane.set(view);
-};
+}
+
+module.exports = article;
+article.synchronize = model.synchronize;
