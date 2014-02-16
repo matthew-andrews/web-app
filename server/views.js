@@ -4,7 +4,7 @@
 
 var Q = require('q');
 var hoganjs = require('hogan.js');
-var fruitmachine = module.exports = require('fruitmachine');
+var fruitmachine = require('fruitmachine');
 var readFile = require('fs').readFile;
 
 /**
