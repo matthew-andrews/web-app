@@ -1,4 +1,3 @@
-
 /**
  * External dependencies
  */
@@ -17,7 +16,6 @@ app('/', index);
 app(/^([0-9]+)\/?$/, article);
 
 module.exports = function() {
-  app.start();
   appcache().then(function(result) {
     if (result === 'updateready') {
       if (confirm("Your app has been updated.  Would you like to restart?")) {
@@ -27,6 +25,7 @@ module.exports = function() {
   });
   indexeddb()
     .then(function() {
+      app.start();
       return article.synchronize();
     });
 };

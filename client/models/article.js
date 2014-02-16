@@ -7,7 +7,8 @@ function download(id) {
   var url = '/api/article' + (id ? '/' + id : 's') + '.json';
   Q.nfcall(superagent.get, url)
     .then(function(res) {
-      deferred.resolve(res.body);
+      if (res.text === 'offline') deferred.reject();
+      else deferred.resolve(res.body);
     });
   return deferred.promise;
 }

@@ -12,13 +12,19 @@ function render(data) {
 module.exports = function(req) {
   var json = req.init ? window.json : undefined;
 
-  if (!view) {
+  if (view) {
+    view.model.clear();
+  } else {
     view = new List(json);
     view.on('refreshbuttonclick', function() {
       articles.synchronize().then(render);
     });
   }
 
-  if (!req.init) articles.get().then(render);
-  pane.set(view);
+  if (!req.init || !json) {
+    articles.get().then(render);
+    pane.inject(view);
+  } else {
+    pane.set(view);
+  }
 };

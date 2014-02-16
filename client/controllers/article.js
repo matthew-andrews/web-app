@@ -1,23 +1,30 @@
-var Module = require('../views/article');
-var model = require('../models/article');
+var Article = require('../views/article');
+var articles = require('../models/article');
 var pane = require('../pane');
+var view;
+
+function render(data) {
+  view.model.set(data);
+  view.render();
+  view.setup();
+}
 
 function article(req) {
-  var json;
-  if (req.init) json = window.json;
-  var view = new Module(json);
+  var json = req.init ? window.json : undefined;
 
-  if (!req.init) {
-    model.get(parseInt(req.params[0], 10))
-      .then(function(data) {
-        view.model.set(data);
-        view.render();
-      });
-    view.render();
+  if (view) {
+    view.model.clear();
+  } else {
+    view = new Article(json);
   }
 
-  pane.set(view);
+  if (!req.init || !json) {
+    articles.get(parseInt(req.params[0], 10)).then(render);
+    pane.inject(view);
+  } else {
+    pane.set(view);
+  }
 }
 
 module.exports = article;
-article.synchronize = model.synchronize;
+article.synchronize = articles.synchronize;
