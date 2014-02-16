@@ -4,12 +4,12 @@
 
 var app = require('page');
 
-var appcache = require('./client/libs/appcache');
-var indexeddb = require('./client/libs/indexeddb');
+var appcache = require('./libs/appcache');
+var indexeddb = require('./libs/indexeddb');
 
-var index = require('./client/controllers');
-var article = require('./client/controllers/article');
-var pane = require('./client/pane');
+var index = require('./controllers');
+var article = require('./controllers/article');
+var pane = require('./pane');
 
 app.base('/');
 app('/', index);

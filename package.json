@@ -25,6 +25,6 @@
     "grunt-contrib-watch": "~0.5.3",
     "grunt-contrib-sass": "~0.7.2"
   },
-  "main": "server.js",
+  "main": "server/main.js",
   "browser": "client.js"
 }

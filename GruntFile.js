@@ -6,7 +6,7 @@ module.exports = function(grunt) {
 
     browserify: {
       build: {
-        src: 'client.js',
+        src: 'client/main.js',
         dest: 'public/<%= pkg.name %>.js'
       },
       options: {
@@ -17,7 +17,7 @@ module.exports = function(grunt) {
 
     watch: {
       scripts: {
-        files: ['lib/**/*.js', 'client/**/*.js', 'client.js', 'client/*.js', 'main.css', 'views/**/*.html'],
+        files: ['lib/**/*.js', 'client/**/*.js', 'client/*.js', 'main.css', 'views/**/*.html'],
         tasks: ['default']
       }
     },
