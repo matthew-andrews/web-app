@@ -3,9 +3,7 @@
  */
 
 var express = require('express');
-var resources = require('./middleware/resources');
-
-// HACK: Force the views to get instantiated
+var resources = require('./lib/resources');
 var prepareViews = require('./views');
 
 var app = express();
@@ -13,7 +11,7 @@ app.use(express.cookieParser());
 
 app.set('view engine', 'html');
 app.enable('view cache');
-app.set('view', require('./view'));
+app.set('view', require('./lib/view'));
 app.engine('html', require('hogan-express'));
 
 // API only endpoints
