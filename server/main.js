@@ -16,8 +16,8 @@ app.engine('html', require('hogan-express'));
 app.set('views', 'templates');
 
 // API only endpoints
-app.get('/api/articles.json', require('./controllers/article-json'));
-app.get(/^\/api\/article\/([0-9]+)\.json\/?$/, require('./controllers/article-json'));
+app.get('/api/articles.json', require('./controllers/api/article'));
+app.get(/^\/api\/article\/([0-9]+)\.json\/?$/, require('./controllers/api/article'));
 
 // Shared endpoints
 app.get('/', resources, require('./controllers'));
