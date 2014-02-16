@@ -13,6 +13,7 @@ app.set('view engine', 'html');
 app.enable('view cache');
 app.set('view', require('./lib/view'));
 app.engine('html', require('hogan-express'));
+app.set('views', 'templates');
 
 // API only endpoints
 app.get('/api/articles.json', require('./controllers/article-json'));

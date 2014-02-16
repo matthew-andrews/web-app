@@ -24,7 +24,7 @@ exports.get = function(id) {
           body: item.description
         };
         if (id && id === count) {
-          cb(null, story);
+          deferred.resolve(story);
         } else if (!id) {
           data.push(story);
         }

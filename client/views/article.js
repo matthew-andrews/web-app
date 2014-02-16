@@ -1,5 +1,5 @@
 var fruitmachine = require('fruitmachine');
-var template = require('../../views/partials/apple.html');
+var template = require('../../templates/partials/apple.html');
 
 module.exports = fruitmachine.define({
   name: 'apple',

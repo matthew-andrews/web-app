@@ -14,7 +14,7 @@ var readFile = require('fs').readFile;
 var views = ['apple', 'satsuma'];
 
 function register(name) {
-  return Q.nfcall(readFile, __dirname + '/../views/partials/' + name + '.html', 'utf8')
+  return Q.nfcall(readFile, __dirname + '/../templates/partials/' + name + '.html', 'utf8')
     .then(function(raw) {
       var template = hoganjs.compile(raw);
       fruitmachine.define({ name: name, template: template.render.bind(template) });
