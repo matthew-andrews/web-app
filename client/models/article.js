@@ -38,7 +38,8 @@ function synchronize() {
     })
     .then(function() {
       deferred.resolve(articles);
-    });
+    })
+    .catch(deferred.reject);
   return deferred.promise;
 }
 

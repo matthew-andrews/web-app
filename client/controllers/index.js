@@ -17,7 +17,12 @@ module.exports = function(req) {
   } else {
     view = new List(json);
     view.on('refreshbuttonclick', function() {
-      articles.synchronize().then(render);
+      articles
+        .synchronize()
+        .then(render)
+        .catch(function() {
+          alert("The app has failed to update");
+        });
     });
   }
 
