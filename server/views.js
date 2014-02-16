@@ -22,7 +22,5 @@ function register(name) {
 }
 
 module.exports = function() {
-  return Q.all(views.map(function(view) {
-    return register(view);
-  }));
+  return Q.all(views.map(register));
 };
