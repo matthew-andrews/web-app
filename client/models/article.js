@@ -20,7 +20,7 @@ function get(id) {
       return download(id)
         .then(deferred.resolve)
         .catch(deferred.reject);
-    })
+    });
   return deferred.promise;
 }
 
@@ -30,12 +30,14 @@ function synchronize() {
   download()
     .then(function(results) {
       articles = results;
-      return indexeddb.clear('articles')
+      return indexeddb.clear('articles');
     })
     .then(function() {
       return indexeddb.insert('articles', articles);
     })
-    .then(deferred.resolve);
+    .then(function() {
+      deferred.resolve(articles);
+    });
   return deferred.promise;
 }
 
