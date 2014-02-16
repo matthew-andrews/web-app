@@ -14,6 +14,7 @@
 - ~~Rename routes to controllers :/~~
 - ~~Stop AppCache from double-updating!!!~~ (hacked for now, need a more elegant solution)
 - Polyfill IndexedDB on WebSQL platforms
+- Remove o-colors dep
 
 Clean up:
 
