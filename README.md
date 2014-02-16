@@ -13,6 +13,7 @@
 - ~~Consider making the pane.start method part of the routers~~
 - ~~Rename routes to controllers :/~~
 - ~~Stop AppCache from double-updating!!!~~ (hacked for now, need a more elegant solution)
+- Polyfill IndexedDB on WebSQL platforms
 
 Clean up:
 
