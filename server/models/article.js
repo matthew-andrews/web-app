@@ -7,14 +7,10 @@ function streamArticles() {
   return rssStream.pipe(new FeedParser());
 }
 
-function get(id, cb) {
+exports.get = function(id) {
+  var deferred = Q.defer();
   var data = [];
   var count = 0;
-
-  if (!cb) {
-    cb = id;
-    id = undefined;
-  }
 
   streamArticles()
     .on('readable', function() {
@@ -36,13 +32,10 @@ function get(id, cb) {
     })
     .on('end', function() {
       if (id > count) {
-        cb(new Error("Article not found"));
+        deferred.reject(new Error("Article not found"));
       } else if (!id) {
-        cb(null, data);
+        deferred.resolve(data);
       }
     });
-}
-
-exports.get = function(id) {
-  return Q.nfcall(get, id);
+  return deferred.promise;
 };
