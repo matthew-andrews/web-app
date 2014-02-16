@@ -15,7 +15,7 @@ app.set('view', require('./lib/view'));
 app.engine('html', require('hogan-express'));
 app.set('views', 'templates');
 
-// API only endpoints
+// Api only endpoints
 app.get('/api/articles.json', require('./controllers/api/article'));
 app.get(/^\/api\/article\/([0-9]+)\.json\/?$/, require('./controllers/api/article'));
 
