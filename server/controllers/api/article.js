@@ -1,5 +1,5 @@
 var Q = require('q');
-var model = require('../models/article');
+var model = require('../../models/article');
 
 module.exports = function(req, res) {
   var id = parseInt(req.params[0], 10);
