@@ -1,8 +1,7 @@
-var Q = require('q');
-var model = require('../models/article');
+var articles = require('../models/article');
 
 module.exports = function(req, res) {
-  model.get()
+  articles.get()
     .then(function(data) {
       data = data.map(function(item) {
         delete item.body;
