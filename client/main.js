@@ -9,7 +9,6 @@ var indexeddb = require('./lib/indexeddb');
 
 var index = require('./controllers');
 var article = require('./controllers/article');
-var pane = require('./pane');
 
 app.base('/');
 app('/', index);

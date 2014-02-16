@@ -1,6 +1,6 @@
 var List = require('../views/list');
 var articles = require('../models/article');
-var pane = require('../pane');
+var pane = require('../lib/pane');
 var view;
 
 function render(data) {
