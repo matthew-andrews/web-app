@@ -2,23 +2,20 @@ var Q = require('q');
 var fs = require('fs');
 var resources = { js: 'web-app.js', css: 'web-app.css' };
 
-function mtime(key, cb) {
-  fs.stat(__dirname + '/../../public/' + resources[key], function(err, stats) {
-    if (err) return cb(err);
-    cb(null, key, stats.mtime.getTime());
-  });
+function mtime(key) {
+  return Q.nfcall(fs.stat, __dirname + '/../../public/' + resources[key])
+    .then(function(stats) {
+      return stats.mtime.getTime();
+    });
 }
 
 exports.get = function() {
-  return Q.all(Object.keys(resources).map(function(resource) {
-    return Q.nfcall(mtime, resource);
-  }))
-    .then(function(results) {
-
-      // REVIEW: Unreadability set to maximum
-      return results.reduce(function(previousValue, currentValue) {
-        previousValue[currentValue[0]] = currentValue[1];
-        return previousValue;
+  var keys = Object.keys(resources);
+  return Q.all(keys.map(mtime))
+    .then(function(resources) {
+      return keys.reduce(function(accumlator, key, index) {
+        accumlator[key] = resources[index];
+        return accumlator;
       }, {});
     });
 };

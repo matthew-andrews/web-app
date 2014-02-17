@@ -17,7 +17,7 @@ function register(name) {
   return Q.nfcall(fs.readFile, directory + '/' + name, 'utf8')
     .then(function(raw) {
       var template = hoganjs.compile(raw);
-      fruitmachine.define({ name: name, template: template.render.bind(template) });
+      fruitmachine.define({ name: name.replace(/\.html$/, ''), template: template.render.bind(template) });
     });
 }
 
