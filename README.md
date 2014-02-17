@@ -10,4 +10,4 @@ node server/main.js & # or nodemon server/main.js (if you have nodemon installed
 grunt watch &
 ```
 
-To see the AppCache update mechanism edit any file inside templates or clients.
+To see the AppCache update mechanism edit any file inside `templates` or `client`.
