@@ -3,9 +3,8 @@ var articles = require('../models/article');
 module.exports = function(req, res) {
   articles.get()
     .then(function(data) {
-      data = data.map(function(item) {
-        delete item.body;
-        return item;
+      data.forEach(function(item, index) {
+        delete data[index].body;
       });
       res.render("fruitmachine", {
         module: "satsuma",
