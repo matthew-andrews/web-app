@@ -14,6 +14,8 @@ exports.get = function() {
     return Q.nfcall(mtime, resource);
   }))
     .then(function(results) {
+
+      // REVIEW: Unreadability set to maximum
       return results.reduce(function(previousValue, currentValue) {
         previousValue[currentValue[0]] = currentValue[1];
         return previousValue;
