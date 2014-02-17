@@ -1,4 +1,4 @@
-var model = require('../models/resource');
+var model = require('../../models/resource');
 
 module.exports = function(req, res) {
   res.set('Content-Type', 'text/cache-manifest');

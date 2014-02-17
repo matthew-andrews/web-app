@@ -24,9 +24,9 @@ app.get('/', resources, require('./controllers'));
 app.get(/^\/([0-9]+)\/?$/, resources, require('./controllers/article'));
 
 // Offline endpoints
-app.get('/offline/iframe', require('./controllers/iframe'));
-app.get('/offline/manifest', require('./controllers/manifest'));
-app.get('/api/offline', require('./controllers/offline'));
+app.get('/offline/iframe', require('./controllers/offline/iframe'));
+app.get('/offline/manifest', require('./controllers/offline/manifest'));
+app.get('/api/offline', require('./controllers/offline/api'));
 
 // Static endpoints
 app.use(express.static('public'));
