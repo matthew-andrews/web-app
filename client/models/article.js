@@ -7,6 +7,11 @@ function download(id) {
   var url = '/api/article' + (id ? '/' + id : 's') + '.json';
   Q.nfcall(superagent.get, url)
     .then(function(res) {
+
+      // HACK: Because we use AppCache fallbacks even for URLs that will
+      // only work online no ajax request will ever 'fail' due to lack of
+      // connectivity anymore.  If the response is 'offline' then we know
+      // that in reality it has failed and act appropriately.
       if (res.text === 'offline') deferred.reject();
       else deferred.resolve(res.body);
     });
