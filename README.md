@@ -6,6 +6,7 @@
 git clone git@github.com:matthew-andrews/web-app.git
 cd web-app
 npm install
+grunt
 node server/main.js & # or nodemon server/main.js (if you have nodemon installed)
 grunt watch &
 ```
