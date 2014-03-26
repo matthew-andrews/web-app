@@ -69,7 +69,7 @@ function load() {
   // root returns a Javascript bootstrap rather
   // than content.
   var cookieExpires = new Date(new Date().getTime() + 60 * 5 * 1000);
-  document.cookie = cookie + "=1;expires=" + cookieExpires.toGMTString();
+  document.cookie = cookie + "=1;path=/;expires=" + cookieExpires.toGMTString();
   var iframe = document.createElement('IFRAME');
   iframe.setAttribute('style', 'width:0px; height:0px; visibility:hidden; position:absolute; border:none');
   iframe.setAttribute('src', '/' + namespace + '/iframe');
@@ -96,7 +96,7 @@ function onEvent(eventCode, hasChecked) {
 
       // Remove appcacheUpdate cookie
       cookieExpires = new Date(new Date().getTime() - 60 * 5 * 1000);
-      document.cookie = cookie + "=;expires=" + cookieExpires.toGMTString();
+      document.cookie = cookie + "=;path=/;expires=" + cookieExpires.toGMTString();
 
       // Remove message listener
       window.removeEventListener("message", onMessage);
